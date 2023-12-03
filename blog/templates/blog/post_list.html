@@ -1,26 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Negin's blog</title>
-</head>
-<body>
-    <header>
-        <h1><a href="/">Negin's Blog</a></h1>
-    </header>
+{% extends 'blog/base.html' %}
 
-    
-        <article>
-            <time>Published: 11.25.2023, 9:25</time>
-            <h2><a href="">My first post</a></h2>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus</p>
+{% block content %}
+    {% for post in posts %}
+        <article class="post">
+            <time class="date">
+                {{ post.published_date }}
+            </time>
+            <h2><a href="">{{ post.title }}</a></h2>
+            <p>{{ post.text|linebreaksbr }}</p>
         </article>
-        <br>
-        <br>
-        <article>
-            <time>Published: 11.25.2023, 9:26</time>
-            <h2><a href="">My second post</a></h2>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
-        </article>
-    
-</body>
-</html>
+    {% endfor %}
+{% endblock %}
